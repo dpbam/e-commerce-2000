@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       {
         model: Tag,
         attributes: ["tag_name"],
-        as: "tagProduct",
+        as: "tag_product",
       },
     ],
   })
@@ -43,16 +43,18 @@ router.get("/:id", (req, res) => {
     //   "stock",
     //   [sequelize.literal("(SELECT)")],
     // ],
-    // include: [
-    //   {
-    //     model: Category,
-    //     attributes:
-    //   },
-    //   {
-    //     model: Tag,
-    //     attributes: ["tag_name"],
-    //   },
-    // ],
+    include: [
+      {
+        model: Category,
+        attributes: ["category_name"],
+        as: "cat_name",
+      },
+      {
+        model: Tag,
+        attributes: ["tag_name"],
+        as: "tag_product",
+      },
+    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
