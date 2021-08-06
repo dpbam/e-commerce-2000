@@ -7,8 +7,19 @@ const { Product, Category, Tag, ProductTag } = require("../../models");
 // get all products
 router.get("/", (req, res) => {
   // find all products
-  Product.findAll({});
-  // be sure to include its associated Category and Tag data
+  Product.findAll({
+    // be sure to include its associated Category and Tag data
+    include: [
+      {
+        model: Category,
+        attributes: ["category_name"],
+      },
+      {
+        model: Tag,
+        attributes: ["tag_name"],
+      },
+    ],
+  });
 });
 
 // get one product
@@ -18,22 +29,23 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: [
-      "id",
-      "product_name",
-      "price",
-      "stock",
-      [sequelize.literal("(SELECT)")],
-    ],
-    include: [
-      {
-        model: Category,
-      },
-      {
-        model: Tag,
-        attributes: [""],
-      },
-    ],
+    // attributes: [
+    //   "id",
+    //   "product_name",
+    //   "price",
+    //   "stock",
+    //   [sequelize.literal("(SELECT)")],
+    // ],
+    // include: [
+    //   {
+    //     model: Category,
+    //     attributes:
+    //   },
+    //   {
+    //     model: Tag,
+    //     attributes: ["tag_name"],
+    //   },
+    // ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -42,7 +54,7 @@ router.get("/:id", (req, res) => {
       }
 
       // serialize the data
-      const post = dbPostData.get({ plain: true });
+      // const post = dbPostData.get({ plain: true });
 
       // pass data to template
       // res.render("single-post", {
@@ -70,7 +82,7 @@ router.post("/", (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
-    tagIds: req.session.tagIds,
+    tagIds: req.session.category_id,
   })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
