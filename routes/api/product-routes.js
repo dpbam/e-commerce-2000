@@ -13,13 +13,20 @@ router.get("/", (req, res) => {
       {
         model: Category,
         attributes: ["category_name"],
+        as: "cat_name",
       },
       {
         model: Tag,
         attributes: ["tag_name"],
+        as: "tagProduct",
       },
     ],
-  });
+  })
+    .then((dbCategoryData) => res.json(dbCategoryData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // get one product
