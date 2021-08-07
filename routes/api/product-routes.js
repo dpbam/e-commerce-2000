@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       {
         model: Tag,
         attributes: ["tag_name"],
-        // as: "tag_product",
+        as: "product_tag",
       },
     ],
   })
@@ -51,9 +51,8 @@ router.get("/:id", (req, res) => {
       },
       {
         model: Tag,
-        through: ProductTag,
         attributes: ["id", "tag_name"],
-        as: "product_tag",
+        through: ProductTag,
       },
     ],
   })
