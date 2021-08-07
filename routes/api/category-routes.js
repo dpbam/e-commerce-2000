@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Category, Product, Tag } = require("../../models");
 
 // The `/api/categories` endpoint
-
 router.get("/", (req, res) => {
   // find all categories
   Category.findAll({
@@ -63,6 +62,7 @@ router.post("/", (req, res) => {
     });
 });
 
+// PUT /api/categories/1
 router.put("/:id", (req, res) => {
   // update a category by its `id` value
   Category.update(
