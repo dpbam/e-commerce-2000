@@ -66,7 +66,6 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   // update a category by its `id` value
   Category.update(
-    // req.body,
     {
       category_name: req.body.category_name,
     },
@@ -100,7 +99,7 @@ router.delete("/:id", (req, res) => {
     .then((dbCategoryData) => {
       if (!dbCategoryData) {
         res.status(404).json({ message: "No category found with this id" });
-        return;
+        // return;
       }
       res.json(dbCategoryData);
     })

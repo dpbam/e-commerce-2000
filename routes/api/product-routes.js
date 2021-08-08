@@ -63,14 +63,6 @@ router.get("/:id", (req, res) => {
         return;
       }
       res.json(dbProductData);
-      // serialize the data
-      // const post = dbPostData.get({ plain: true });
-
-      // pass data to template
-      // res.render("single-post", {
-      //   post,
-      //   loggedIn: req.session.loggedIn,
-      // });
     })
     .catch((err) => {
       console.log(err);
@@ -92,9 +84,9 @@ router.post("/", (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
-    tagIds: req.session.category_id,
+    tagIds: req.body.category_id,
   })
-    .then((dbProductData) => {
+    .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
