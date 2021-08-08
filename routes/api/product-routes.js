@@ -12,13 +12,14 @@ router.get("/", (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ["category_name"],
-        as: "category_product",
+        attributes: ["id", "category_name"],
+        // as: "category_product",
       },
       {
         model: Tag,
-        attributes: ["tag_name"],
-        as: "product_tag",
+        attributes: ["id", "tag_name"],
+        through: ProductTag,
+        // as: "product_tag",
       },
     ],
   })
@@ -46,12 +47,12 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Category,
-        attributes: ["id", "category_name"],
-        as: "category_product",
+        // attributes: ["id", "category_name"],
+        // as: "category_product",
       },
       {
         model: Tag,
-        attributes: ["id", "tag_name"],
+        // attributes: ["id", "tag_name"],
         through: ProductTag,
       },
     ],
@@ -61,7 +62,7 @@ router.get("/:id", (req, res) => {
         res.status(404).json({ message: "No product found with this id" });
         return;
       }
-
+      res.json(dbProductData);
       // serialize the data
       // const post = dbPostData.get({ plain: true });
 

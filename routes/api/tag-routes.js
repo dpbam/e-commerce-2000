@@ -35,7 +35,18 @@ router.get("/:id", (req, res) => {
         through: ProductTag,
       },
     ],
-  });
+  })
+    .then((dbTagData) => {
+      if (!dbTagData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbTagData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.post("/", (req, res) => {
