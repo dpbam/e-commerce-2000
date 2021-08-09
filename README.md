@@ -4,6 +4,10 @@
 
 A command line back end to an application that accesses databases for an ecommerce app and allows the user to update and change the database.
 
+This was a very challenging Challenge. I still wasn't able to figure out why my tag PUT request worked, but also gave a 404 error in Insomnia.
+
+I received a lot of help from AskBCS as well as TA Lia and student Mark on Lia's office hours. I also group coded with students Donald and Maria several times and we learned quite a bit together trying to get started as well as help eachother follow error messages.
+
 ## Table of Contents
 
 - [Installation](#installation)
