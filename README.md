@@ -2,7 +2,7 @@
 
 ## Description
 
-A command line application that accesses databases for an ecommerce app and allows the user to update the database.
+A command line back end to an application that accesses databases for an ecommerce app and allows the user to update and change the database.
 
 ## Table of Contents
 
