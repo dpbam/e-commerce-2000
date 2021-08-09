@@ -18,7 +18,9 @@ Clone the repo from GitHub, download Node.js, Sequelize, and Express.js. npm ins
 
 ## Usage
 
-- View walk-thru here:
+- View walk-thru here in two parts:
+  - part 1 https://drive.google.com/file/d/1bT_-KLCZIhQ_VdVveXD-3BdzV12FFI7W/view
+  - part 2 https://drive.google.com/file/d/1oMwZ7ehDrzFv9vIxKbl6aXTdNP7ODnj-/view
 
 ## Contributing
 
@@ -30,4 +32,4 @@ Just run the app. Does it work?
 
 ## Questions
 
-Check my GitHub at https://github.com/dpbam/employee-database-manager-2000
+Check my GitHub at https://github.com/dpbam/e-commerce-2000
